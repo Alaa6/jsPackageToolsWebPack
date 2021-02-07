@@ -16,10 +16,10 @@ module.exports = {
     module: {
         rules: [
 
-            //css
+         
             { test: /\.css$/i, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
 
-            //for images
+         
             ,{
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 use: [{
@@ -32,7 +32,7 @@ module.exports = {
                     {
                       loader: ImageMinimizerPlugin.loader,
                       options: {
-                        severityError: 'warning', // Ignore errors on corrupted images
+                        severityError: 'warning',
                         minimizerOptions: {
                           plugins: ['gifsicle',['mozjpeg', { quality: 60 }],'svgo','optipng']
                         },
@@ -51,9 +51,8 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
       `...`,
-      //or for prevent create LICENSE.txt file
+  
       new TerserPlugin({
         terserOptions: {
             format: {
